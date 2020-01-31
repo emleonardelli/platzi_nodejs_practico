@@ -8,7 +8,8 @@ exports.success = (req, res, message, status) => {
   })
 }
 
-exports.error = (req, res, message, status) => {
+exports.error = (req, res, message, status, error) => {
+  console.log('[Response error] '+error)
   let statusCode = status || 500
   let statusMessage = message || 'Internal server error'
   res.status(statusCode).send({
