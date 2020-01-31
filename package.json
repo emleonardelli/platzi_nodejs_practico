@@ -1,0 +1,22 @@
+{
+  "name": "nodejs_practico",
+  "version": "1.0.0",
+  "description": "Proyecto de prueba para el curso de practico de NodeJS de Platzi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emleonardelli/platzi_nodejs_practico.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emleonardelli/platzi_nodejs_practico/issues"
+  },
+  "homepage": "https://github.com/emleonardelli/platzi_nodejs_practico#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
