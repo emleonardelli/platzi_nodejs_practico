@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/emleonardelli/platzi_nodejs_practico#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "nanoid": "^2.1.11",
     "swagger-ui-express": "^4.1.3"
   }
