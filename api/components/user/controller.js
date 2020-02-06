@@ -22,8 +22,6 @@ module.exports=function(injectedStore) {
 
     if (body.id){
       user.id=body.id
-    }else{
-      user.id=nanoid()
     }
 
     if (body.password || body.username){

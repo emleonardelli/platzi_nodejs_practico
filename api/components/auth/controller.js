@@ -6,11 +6,12 @@ const error=require('../../../utils/error')
 module.exports=function(injectedStore) {
   let store=injectedStore
   if (!store){
-    store=require('../../../store/dummy')
+    store=require('../../../store/msyql')
   }
   async function login(username, password){
     const data=await store.query(TABLE, {username: username})
-
+    console.log(data);
+    
     return bcrypt.compare(password, data.password)
       .then(sonIguales => {
         if (sonIguales === true) {
