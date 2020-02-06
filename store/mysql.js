@@ -79,13 +79,34 @@ function upsert(table, data) {
     }
 }
 
-function query(table, query) {
-    return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM ${table} WHERE ?`, query, (err, res) => {
+function query(table, query, join) {
+    let joinQuery = ''
+    if (join) {
+        const key = Object.keys(join)[0]
+        const val = join[key]
+        joinQuery = `JOIN ${key} ON ${table}.${val} = ${key}.id`
+    }
+
+    return new Promise((resolve, reject) => {        
+        connection.query(`SELECT * FROM ${table} ${joinQuery} WHERE ?`, query, (err, res) => {
             if (err) return reject(err);
-            result=JSON.stringify(res[0]);
-            result=JSON.parse(result)   
-            resolve(result || null);
+            if (res.length == 0) {
+                resolve(null);
+            }else{
+                result=JSON.stringify(res[0])
+                result=JSON.parse(result)
+                resolve(result);
+            }
+            
+        })
+    })
+}
+
+function remove(table, id) {
+    return new Promise((resolve, reject) => {
+        connection.query(`DELETE FROM ${table} WHERE id=?`, id, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
         })
     })
 }
@@ -94,5 +115,6 @@ module.exports = {
     list,
     get,
     upsert,
-    query
+    query,
+    remove
 };
